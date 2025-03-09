@@ -25,6 +25,7 @@ repositories {
 }
 
 dependencies {
+	// 공통적인 의존성들
 	implementation 'org.springframework.boot:spring-boot-starter-amqp'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.flywaydb:flyway-core'
@@ -32,6 +33,8 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.h2database:h2'
 	annotationProcessor 'org.projectlombok:lombok'
+
+	// 테스트 의존성
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.amqp:spring-rabbit-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
@@ -41,35 +44,18 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
-
+// 공통 서브모듈 설정
 subprojects {
-	group 'com.metlife.metsys'
-	version '3.3.10-SNAPSHOT'
+	group = 'com.metlife.metsys'
+	version = '3.3.10-SNAPSHOT'
 	sourceCompatibility = '21'
-
-	apply plugin: 'java'
-	apply plugin: 'java-library'
-	apply plugin: 'org.springframework.boot'
-	apply plugin: 'io.spring.dependency-management'
 
 	repositories {
 		mavenCentral()
 	}
 
 	dependencies {
-		testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.0'
-		testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.0'
-
-		implementation 'org.springframework.boot:spring-boot-starter-amqp'
-		implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-		implementation 'org.flywaydb:flyway-core'
-		compileOnly 'org.projectlombok:lombok'
-		developmentOnly 'org.springframework.boot:spring-boot-devtools'
-		runtimeOnly 'com.h2database:h2'
-		annotationProcessor 'org.projectlombok:lombok'
-		testImplementation 'org.springframework.boot:spring-boot-starter-test'
-		testImplementation 'org.springframework.amqp:spring-rabbit-test'
-		testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+		// 서브모듈에서 추가할 의존성은 여기에
 	}
 
 	test {
