@@ -54,8 +54,13 @@ subprojects {
 		mavenCentral()
 	}
 
-	dependencies {
-		// 서브모듈에서 추가할 의존성은 여기에
+	afterEvaluate {
+		it.dependencies {
+			// 서브모듈에서 추가할 의존성은 여기에
+			implementation 'org.springframework.boot:spring-boot-starter:3.3.10-SNAPSHOT'
+			testImplementation 'org.springframework.boot:spring-boot-starter-test:3.3.10-SNAPSHOT'
+			testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+		}
 	}
 
 	test {

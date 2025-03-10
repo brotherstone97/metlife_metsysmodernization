@@ -19,9 +19,6 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter:3.3.10-SNAPSHOT'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test:3.3.10-SNAPSHOT'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 tasks.named('test') {
